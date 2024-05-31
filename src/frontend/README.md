@@ -1,23 +1,28 @@
-# Vue 3 + TypeScript + Vite
+# Vue3-Music
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue
-3 `<script setup>` SFCs, check out
-the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+基于 Vue3+TypeScript 开发的web端音乐播放器，界面参照网易云音乐桌面客户端。实现了暗黑主题等多主题切换。
 
-## Recommended IDE Setup
+在线体验：https://leoj340.github.io/vue3-music/
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## 本地安装
+```
+git clone https://github.com/leoj340/vue3-music.git
+cd vue3-music
+pnpm install
+pnpm run dev
+```
 
-## Type Support For `.vue` Imports in TS
+## 网易云音乐API
+后端API使用[网易云音乐 Node.js API service](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type
-by default. In most cases this is fine if you don't really care about component prop types outside of templates.
-However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using
-manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+在线体验已将后端部署，如果你想自己搭建api服务，可参考[开发文档](https://binaryify.github.io/NeteaseCloudMusicApi)
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look
-   for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default,
-   Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+## 预览
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+![首页](ui/index.png)
+
+![首页（暗黑主题）](ui/index-dark.png)
+
+![歌单页（蓝色主题）](ui/playlist.png)
+
+![歌手页](ui/artist.png)
