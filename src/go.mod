@@ -1,4 +1,4 @@
-module Wails-Tool-Template
+module ToolTemplate
 
 go 1.21
 
