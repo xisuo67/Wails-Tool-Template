@@ -1,6 +1,6 @@
 <template>
   <el-image :src="logo" class="logo" style="" />
-  <span style="width: 180px;">网易云音乐</span>
+  <span style="width: 180px;">Geek工具</span>
   <el-row class="flex-1">
     <!-- 页头 -->
     <el-col :span="8" class="page-header">

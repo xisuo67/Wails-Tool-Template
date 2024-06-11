@@ -5,7 +5,7 @@
     </el-header>
 
     <el-container style="height: calc(100vh - 130px);">
-      <Aside />
+      <SideBar/>
       <el-main>
         <router-view />
       </el-main>
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import Header from './components/Header.vue'
-import Aside from './components/Aside.vue'
+import SideBar from './components/SideBar.vue'
 // import Footer from './components/Footer/index.vue'
 import Login from "./components/Login/index.vue";
 </script>
