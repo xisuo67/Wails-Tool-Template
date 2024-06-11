@@ -1,0 +1,107 @@
+.el-menu {
+  width: 100%;
+  padding-left: 20px !important;
+  border-bottom: none !important;
+  --el-menu-bg-color: var(--main-bg);
+  --el-menu-text-color: var(--main-text);
+  --el-menu-hover-bg-color: var(--main-bg);
+  --el-menu-hover-text-color: var(--main-text);
+  --el-menu-active-color: var(--main-text);
+  --el-menu-item-font-size: 16px;
+  .el-menu-item.is-active {
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--player-theme) !important;
+  }
+}
+.el-table {
+  th.el-table__cell {
+    background-color: var(--playlist-row-striped) !important;
+  }
+  tr{
+    background-color: var(--playlist-bg) !important;
+    color: var(--main-text);
+    &.playing {
+      color: var(--player-theme);
+    }
+  }
+  --el-fill-color-lighter: var(--playlist-row-striped);
+  --el-fill-color-light: var(--playlist-row-hover);
+  .el-table__cell {
+    border-bottom: none !important;
+    z-index: 0;
+  }
+  .el-table__inner-wrapper::before {
+    height: 0;
+  }
+  .el-table__empty-block {
+    background-color: var(--main-bg);
+  }
+}
+.el-scrollbar {
+  width: 100%;
+}
+.el-scrollbar__bar {
+  z-index: 0;
+}
+.el-button-group+.el-button {
+  margin-left: 12px;
+}
+.el-button-group .el-button--primary {
+  &:first-child {
+    border-right-color: var(--el-button-divide-border-color) !important;
+  }
+  &:last-child {
+    border-left-color: var(--el-button-divide-border-color) !important;
+  }
+  &:not(:first-child):not(:last-child) {
+    border-right-color: var(--el-button-divide-border-color) !important;
+    border-left-color: var(--el-button-divide-border-color) !important;
+  }
+}
+// 主题化改造按钮
+.el-button {
+  --el-button-bg-color: var(--main-bg);
+  --el-button-text-color: var(--main-text);
+  --el-button-hover-bg-color: var(--main-bg-light);
+  --el-button-hover-text-color: var(--main-text);
+  --el-button-border-color: rgb(75, 75, 75);
+  --el-button-hover-border-color: rgb(75, 75, 75);
+  --el-button-active-border-color: rgb(75, 75, 75);
+}
+.el-button--primary {
+  --el-button-bg-color: var(--player-theme);
+  --el-button-border-color: var(--player-theme);
+  --el-button-hover-bg-color: var(--player-theme-light);
+  --el-button-hover-border-color: var(--player-theme-light);
+  --el-button-disabled-bg-color: var(--player-theme-light);
+  --el-button-disabled-border-color: var(--player-theme-light);
+  --el-button-active-bg-color: var(--player-theme);
+  --el-button-active-border-color: var(--player-theme);
+  --el-button-text-color: #ffffff;
+  --el-button-hover-text-color: #ffffff;
+}
+.el-link:hover {
+  color: inherit;
+}
+.el-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  --el-color-primary: var(--player-theme);
+}
+.el-overlay {
+  z-index: 10000 !important;
+}
+// 收藏音乐到歌单弹窗
+.el-dialog.to-playlist-dialog {
+  height: 80vh;
+  margin: 20px auto;
+  .el-dialog__body {
+    height: calc(80vh - 92.44px);
+    padding: 0;
+  }
+}
+.el-message {
+  z-index: 10001 !important;
+}
