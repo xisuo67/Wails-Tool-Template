@@ -11,7 +11,6 @@
       </el-main>
     </el-container>
     <!-- Player -->
-    <Footer />
   </el-container>
   <!-- login弹窗 -->
   <Login />
@@ -20,7 +19,7 @@
 <script setup lang="ts">
 import Header from './components/Header.vue'
 import Aside from './components/Aside.vue'
-import Footer from './components/Footer/index.vue'
+// import Footer from './components/Footer/index.vue'
 import Login from "./components/Login/index.vue";
 </script>
 
