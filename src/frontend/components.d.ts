@@ -9,8 +9,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ArtistColumn: typeof import('./src/components/Songs/ArtistColumn.vue')['default']
-    Cover: typeof import('./src/components/Cover/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -38,8 +36,6 @@ declare module '@vue/runtime-core' {
     NetLess: typeof import('./src/components/NetLess/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Songs: typeof import('./src/components/Songs/index.vue')['default']
-    ToPlayList: typeof import('./src/components/ToPlayList/index.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

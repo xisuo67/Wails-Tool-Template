@@ -23,7 +23,30 @@ const router = createRouter({
                 },
             ]
         },
-        
+        {
+            path: '/community',
+            component: Layout,
+            meta: { title: '社区' },
+            children: [
+                {
+                    path: 'donation',
+                    component: () => import('@/views/Community/Donation/index.vue'),
+                    meta: { title: '捐赠明细' }
+                },
+            ]
+        },
+        {
+            path: '/common',
+            component: Layout,
+            meta: { title: '公共' },
+            children: [
+                {
+                    path: 'settings',
+                    component: () => import('@/views/common/settings/index.vue'),
+                    meta: { title: '系统设置' }
+                },
+            ]
+        },
     ]
 })
 

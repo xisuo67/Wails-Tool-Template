@@ -58,25 +58,20 @@
         ]
       },
       {
-        title: '我的',
+        title: '社区',
         list: [
           {
-            path: `/my/playlist/${myPlayList.value.liked.id}`,
-            text: '我喜欢的音乐',
+            path: `/community/donation`,
+            text: '捐赠明细',
             icon: Like
           },
-          {
-            path: `/my/recent`,
-            text: '最近播放',
-            icon: Time
-          }
         ]
       },
       {
         title: '系统设置',
         list: [
           {
-            path: `/my/playlist/${myPlayList.value.liked.id}`,
+            path: `/common/settings`,
             text: '设置',
             icon: Setting
           },

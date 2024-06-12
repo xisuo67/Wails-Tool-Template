@@ -13,14 +13,14 @@
     <!-- Player -->
   </el-container>
   <!-- login弹窗 -->
-  <Login />
+  <!-- <Login /> -->
 </template>
 
 <script setup lang="ts">
 import Header from './components/Header.vue'
 import SideBar from './components/SideBar.vue'
 // import Footer from './components/Footer/index.vue'
-import Login from "./components/Login/index.vue";
+// import Login from "./components/Login/index.vue";
 </script>
 
 <style lang="scss" scoped>
