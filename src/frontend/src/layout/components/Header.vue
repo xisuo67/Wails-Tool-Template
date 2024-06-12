@@ -22,6 +22,7 @@
         <DownOne theme="filled" size="18" :strokeWidth="2"/>
       </span>
       <Mail class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
+      <SettingTwo class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
       <!-- 主题切换 -->
       <el-popover placement="bottom-start" trigger="click" :width="300" :offset="20">
         <template #reference>
@@ -37,8 +38,6 @@
           </div>
         </div>
       </el-popover>
-      <SettingTwo class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
-    
     </el-col>
   </el-row>
 </template>
