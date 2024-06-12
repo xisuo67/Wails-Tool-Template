@@ -1,8 +1,8 @@
 import {useRouter} from "vue-router";
 import { defineStore } from 'pinia'
 import {reactive, ref} from "vue";
-import {checkLogin, logout} from "@/api/login";
-import {likedSongs, playList} from "@/api/user";
+// import {checkLogin, logout} from "@/api/login";
+// import {likedSongs, playList} from "@/api/user";
 import {PlayList} from "@/models/PlayList";
 import defaultCoverImage from "@/assets/playlist-cover.png";
 
@@ -30,34 +30,34 @@ export const useUserStore = defineStore('user', () => {
     }
 
     function getUserInfo() {
-        checkLogin().then(res => {
-            const { profile } = res.data
-            if (!profile) return
-            userInfo.userId = profile.userId
-            userInfo.userName = profile.nickname
-            userInfo.avatarUrl = profile.avatarUrl
-            hasLogin.value = true
-            getMyPlayList()
-            getMyLikedSongIds()
-        })
+        // checkLogin().then(res => {
+        //     const { profile } = res.data
+        //     if (!profile) return
+        //     userInfo.userId = profile.userId
+        //     userInfo.userName = profile.nickname
+        //     userInfo.avatarUrl = profile.avatarUrl
+        //     hasLogin.value = true
+        //     getMyPlayList()
+        //     getMyLikedSongIds()
+        // })
     }
 
     function exitLogin() {
-        logout().then(() => {
-            sessionStorage.removeItem('cookie')
-            hasLogin.value = false
-            userInfo.userId = logoutUserInfo.userId
-            userInfo.userName = logoutUserInfo.userName
-            userInfo.avatarUrl = logoutUserInfo.avatarUrl
-            router.push('/')
-        }).catch(() => {
-            ElMessage({
-                message: '登出失败',
-                type: 'error',
-                duration: 1000,
-                center: true
-            })
-        })
+        // logout().then(() => {
+        //     sessionStorage.removeItem('cookie')
+        //     hasLogin.value = false
+        //     userInfo.userId = logoutUserInfo.userId
+        //     userInfo.userName = logoutUserInfo.userName
+        //     userInfo.avatarUrl = logoutUserInfo.avatarUrl
+        //     router.push('/')
+        // }).catch(() => {
+        //     ElMessage({
+        //         message: '登出失败',
+        //         type: 'error',
+        //         duration: 1000,
+        //         center: true
+        //     })
+        // })
     }
 
     const defaultMyPlayList: { liked: PlayList, created: PlayList[], collected: PlayList[] } = {
@@ -94,20 +94,20 @@ export const useUserStore = defineStore('user', () => {
     const myPlayList = ref<{ liked: PlayList, created: PlayList[], collected: PlayList[] }>(defaultMyPlayList)
 
     function getMyPlayList() {
-        playList(userInfo.userId).then(res => {
-            myPlayList.value = {
-                liked: res[0],
-                created: res.slice(1, res.length).filter(item => item.creator?.userId === userInfo.userId),
-                collected: res.slice(1, res.length).filter(item => item.creator?.userId !== userInfo.userId)
-            }
-        })
+        // playList(userInfo.userId).then(res => {
+        //     myPlayList.value = {
+        //         liked: res[0],
+        //         created: res.slice(1, res.length).filter(item => item.creator?.userId === userInfo.userId),
+        //         collected: res.slice(1, res.length).filter(item => item.creator?.userId !== userInfo.userId)
+        //     }
+        // })
     }
 
     const myLikedSongIds = ref<number[]>([])
     function getMyLikedSongIds() {
-        likedSongs(userInfo.userId).then(res => {
-            myLikedSongIds.value = res
-        })
+        // likedSongs(userInfo.userId).then(res => {
+        //     myLikedSongIds.value = res
+        // })
     }
 
     return {

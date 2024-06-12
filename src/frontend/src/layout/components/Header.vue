@@ -2,13 +2,8 @@
   <el-image :src="logo" class="logo" style="" />
   <span style="width: 180px;">Geek工具</span>
   <el-row class="flex-1">
-    <!-- 页头 -->
-    <el-col :span="8" class="page-header">
-      <Left theme="outline" size="18" fill="#ffffff" :strokeWidth="2" />
-      <Right theme="outline" size="18" fill="#ffffff" :strokeWidth="2"/>
-    </el-col>
     <!-- RIGHT -->
-    <el-col :span="16"  class="flex-vertical-center justify-end setting">
+    <el-col :span="24"  class="flex-vertical-center justify-end setting">
       <!-- login -->
       <el-popover v-if="hasLogin" placement="bottom" trigger="click" :width="200" :offset="0">
         <template #reference>
@@ -26,6 +21,7 @@
         <span class="text-14">未登录</span>
         <DownOne theme="filled" size="18" :strokeWidth="2"/>
       </span>
+      <Mail class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
       <!-- 主题切换 -->
       <el-popover placement="bottom-start" trigger="click" :width="300" :offset="20">
         <template #reference>
@@ -42,7 +38,7 @@
         </div>
       </el-popover>
       <SettingTwo class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
-      <Mail class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
+    
     </el-col>
   </el-row>
 </template>

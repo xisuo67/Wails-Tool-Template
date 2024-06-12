@@ -4,7 +4,7 @@
       <Header />
     </el-header>
 
-    <el-container style="height: calc(100vh - 130px);">
+    <el-container style="height: calc(100vh);">
       <SideBar/>
       <el-main>
         <router-view />
