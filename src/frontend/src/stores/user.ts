@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import {reactive, ref} from "vue";
 // import {checkLogin, logout} from "@/api/login";
 // import {likedSongs, playList} from "@/api/user";
-import {PlayList} from "@/models/PlayList";
+import {PlayList} from "@/models/App";
 import defaultCoverImage from "@/assets/playlist-cover.png";
 
 const router = useRouter()

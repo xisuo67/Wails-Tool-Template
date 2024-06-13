@@ -1,6 +1,6 @@
 <template>
   <!-- banner -->
-  <el-carousel :interval="4000" type="card" height="220px" @change="changeBanner">
+  <el-carousel :interval="4000" type="card"  @change="changeBanner">
     <el-carousel-item v-for="(banner, index) in banners" :key="index" @click="clickBanner(banner)">
       <div class="banner-item">
         <el-image :src="banner.imageUrl" />
@@ -8,15 +8,58 @@
       </div>
     </el-carousel-item>
   </el-carousel>
+    <!-- 推荐应用 -->
+    <div class="flex-vertical-center">
+    <router-link to="/discover/playlist">
+      <h3>推荐应用<Right theme="outline" size="22"/></h3>
+    </router-link>
+  </div>
+  <div class="grid-col5">
+    <Cover v-for="item in applists"
+           mode="vertical" :image-url="item.picUrl" :key="item.id"
+           icon-placement="bottom-right" icon-transition="el-fade-in-linear" @click="toCommonAppList(item)">
+      <el-link :underline="false" @click="toCommonPlayList(item.id)">{{item.name}}</el-link>
+    </Cover>
+  </div>
 </template>
 
 <script setup lang="ts">
-import {reactive, ref, watch} from "vue";
+import Cover from '@/components/Cover/index.vue'
+import {onMounted, reactive, ref, watch} from "vue";
 import {Banner} from "@/models/Banner";
+import {PersonalizedAppList} from "@/models/App";
+import {bannerList,appList} from "@/views/mock/Discover";
 const banners = ref<Banner[]>([])
 const currentBannerIndex = ref(0)
+const applists = ref<PersonalizedAppList[]>([])
 const changeBanner=(index: number)=>{
   currentBannerIndex.value = index
+}
+onMounted(() => {
+  initBanners()
+  initAppList()
+})
+const initBanners=async ()=>{
+  banners.value= bannerList
+}
+const initAppList=async()=>{
+  applists.value= appList
+}
+const clickBanner=(banner: Banner)=>{
+  const index = banners.value.findIndex(item => item.imageUrl === banner.imageUrl)
+  if (currentBannerIndex.value !== index) return
+
+  if (banner.url) {
+    window.open(banner.url, '_blank')
+  }
+}
+const toCommonAppList=(app:PersonalizedAppList)=>{
+  if (app.url) {
+    window.open(app.url, '_blank')
+  }
+}
+const toCommonPlayList=(id:string)=>{
+
 }
 </script>
 

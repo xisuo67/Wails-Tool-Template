@@ -1,6 +1,6 @@
 import {Song} from "@/models/Song";
 
-export interface PlayList {
+export interface AppList {
     name: string
     id: number
     userId: number
@@ -54,23 +54,17 @@ interface Creator {
     anchor: boolean
 }
 
-export interface TopList extends PlayList{
+export interface TopList extends AppList{
     tracks: Array<{
         first: string;
         second: string;
     }>
 }
 
-export interface PersonalizedPlayList {
+export interface PersonalizedAppList {
     id: number
     type: number
     name: string
-    copywriter: string
     picUrl: string
-    playCount: number
-    trackCount: number
-    trackNumberUpdateTime: number
-    highQuality: boolean
-    canDislike: boolean
-    alg: string
+    url:string
 }
