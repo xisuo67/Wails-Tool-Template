@@ -1,5 +1,6 @@
 <template>
-  <!-- banner -->
+    <el-scrollbar view-style="padding: 10px 20px;">
+      <!-- banner -->
   <el-carousel :interval="4000" type="card"  @change="changeBanner">
     <el-carousel-item v-for="(banner, index) in banners" :key="index" @click="clickBanner(banner)">
       <div class="banner-item">
@@ -17,10 +18,11 @@
   <div class="grid-col5">
     <Cover v-for="item in applists"
            mode="vertical" :image-url="item.picUrl" :key="item.id"
-           icon-placement="bottom-right" icon-transition="el-fade-in-linear" @click="toCommonAppList(item)">
+           @click="toCommonAppList(item)">
       <el-link :underline="false" @click="toCommonPlayList(item.id)">{{item.name}}</el-link>
     </Cover>
   </div>
+    </el-scrollbar>
 </template>
 
 <script setup lang="ts">

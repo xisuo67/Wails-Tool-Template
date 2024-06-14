@@ -51,7 +51,7 @@ const menuGroups = computed(() => {
       list: [
         {
           path: '/discover',
-          text: '发现音乐'
+          text: '为我推荐'
         },
         {
           path: '/video',

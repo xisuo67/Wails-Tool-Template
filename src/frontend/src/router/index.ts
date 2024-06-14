@@ -11,7 +11,7 @@ const router = createRouter({
                 {
                     path: 'discover',
                     component: () => import('@/views/Discover/index.vue'),
-                    meta: { title: '发现音乐' }
+                    meta: { title: '为我推荐' }
                 },
                 /**
                  * 视频
