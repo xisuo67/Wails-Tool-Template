@@ -10,7 +10,6 @@
         <router-view />
       </el-main>
     </el-container>
-    <!-- Player -->
   </el-container>
   <!-- login弹窗 -->
   <Login />
