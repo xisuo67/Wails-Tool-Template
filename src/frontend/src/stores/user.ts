@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import {reactive, ref} from "vue";
 // import {checkLogin, logout} from "@/api/login";
 // import {likedSongs, playList} from "@/api/user";
-import {PlayList} from "@/models/App";
+import {AppList} from "@/models/App";
 import defaultCoverImage from "@/assets/playlist-cover.png";
 
 const router = useRouter()
@@ -60,7 +60,7 @@ export const useUserStore = defineStore('user', () => {
         // })
     }
 
-    const defaultMyPlayList: { liked: PlayList, created: PlayList[], collected: PlayList[] } = {
+    const defaultMyPlayList: { liked: AppList, created: AppList[], collected: AppList[] } = {
         liked: {
             name: '我喜欢的音乐',
             id: -1,
@@ -91,7 +91,7 @@ export const useUserStore = defineStore('user', () => {
         created: [],
         collected: []
     }
-    const myPlayList = ref<{ liked: PlayList, created: PlayList[], collected: PlayList[] }>(defaultMyPlayList)
+    const myPlayList = ref<{ liked: AppList, created: AppList[], collected: AppList[] }>(defaultMyPlayList)
 
     function getMyPlayList() {
         // playList(userInfo.userId).then(res => {

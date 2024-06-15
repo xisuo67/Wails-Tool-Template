@@ -55,7 +55,7 @@ const { hasLogin, userInfo } = storeToRefs(userStore)
 const { toLogin, exitLogin } = userStore
 
 const { currentTheme } = storeToRefs(useAppStore())
-function changeTheme(theme: string) {
+const changeTheme=(theme: string)=> {
   currentTheme.value = theme
   document.body.className = theme === 'red' ? '' : theme
 }
