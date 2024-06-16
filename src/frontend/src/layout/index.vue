@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container style="height: 100%;">
     <el-header class="flex-vertical-center">
       <Header />
     </el-header>
