@@ -38,16 +38,12 @@
                 >
             </el-form-item>
             <el-divider  class="enter-x">其他登录方式</el-divider>
-            <div class="flex justify-evenly enter-x" >
-              <Wechat/>
-              <TencentQq/>
-      <Github />
-      <Twitter />
-      <Alipay/>
-      <!-- <WechatFilled />
-      <AlipayCircleFilled />
-      <GoogleCircleFilled />
-      <TwitterCircleFilled /> -->
+            <div class="flex justify-evenly enter-x login-sign-in-way" >
+              <Wechat class="anticon"/>
+              <TencentQq class="anticon"/>
+      <Github class="anticon"/>
+      <Twitter class="anticon"/>
+      <Alipay class="anticon"/>
     </div>
         </el-form>
   </el-dialog>
@@ -121,7 +117,23 @@ watch(showLogin, val => {
 </script>
 
 <style lang="scss">
+.login-sign-in-way {
+      .anticon {
+        color: #888;
+        font-size: 22px;
+        cursor: pointer;
 
+        &:hover {
+          color: rgb(236, 65, 65);
+        }
+      }
+    }
+.justify-evenly {
+    justify-content: space-evenly;
+}
+.flex {
+    display: flex;
+}
 .loginDialog{
     min-height: 400px;
     background: #f8f8f8 url("@/assets/images/loginBg.jpg") top

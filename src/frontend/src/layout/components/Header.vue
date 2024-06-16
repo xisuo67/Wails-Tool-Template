@@ -4,6 +4,7 @@
   <el-row class="flex-1">
     <!-- RIGHT -->
     <el-col :span="24"  class="flex-vertical-center justify-end setting">
+      
       <!-- login -->
       <el-popover v-if="hasLogin" placement="bottom" trigger="click" :width="200" :offset="0">
         <template #reference>
@@ -21,7 +22,23 @@
         <span class="text-14">未登录</span>
         <DownOne theme="filled" size="18" :strokeWidth="2"/>
       </span>
-      <Mail class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
+      <div ref="userNewsBadgeRef" v-click-outside="onUserNewsClick">
+        <el-badge is-dot class="action-icon" :offset="[0, 22]">
+        <Mail  theme="outline" size="20" :strokeWidth="2"/>
+      </el-badge>
+      </div>
+      <el-popover
+			ref="userNewsRef"
+			:virtual-ref="userNewsBadgeRef"
+			placement="bottom"
+			trigger="click"
+			transition="el-zoom-in-top"
+			virtual-triggering
+			:width="300"
+			:persistent="false"
+		>
+			<UserNews />
+		</el-popover>
       <SettingTwo class="action-icon" theme="outline" size="20" :strokeWidth="2"/>
       <!-- 主题切换 -->
       <el-popover placement="bottom-start" trigger="click" :width="300" :offset="20">
@@ -43,18 +60,27 @@
 </template>
 
 <script setup lang="ts">
+import { defineAsyncComponent, ref, unref, computed, reactive, onMounted } from 'vue';
 import { Left, Right, DownOne, Theme, SettingTwo, Mail, Power, CheckOne } from '@icon-park/vue-next';
 import logo from '@/assets/logo.png'
 import {storeToRefs} from "pinia";
 import {useUserStore} from "@/stores/user";
 import {useAppStore} from "@/stores/app";
 import {themeList} from "@/models/Theme";
-
+// 引入组件
+const UserNews = defineAsyncComponent(() => import('@/layout/navBars/topBar/UserNews.vue'));
+// 定义变量内容
+const userNewsRef = ref();
+const userNewsBadgeRef = ref();
 const userStore = useUserStore()
 const { hasLogin, userInfo } = storeToRefs(userStore)
 const { toLogin, exitLogin } = userStore
 
 const { currentTheme } = storeToRefs(useAppStore())
+// 消息通知点击时
+const onUserNewsClick = () => {
+	unref(userNewsRef).popperRef?.delayHide?.();
+};
 const changeTheme=(theme: string)=> {
   currentTheme.value = theme
   document.body.className = theme === 'red' ? '' : theme
