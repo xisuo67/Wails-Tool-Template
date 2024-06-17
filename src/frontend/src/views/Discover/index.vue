@@ -1,7 +1,7 @@
 <template>
     <el-scrollbar view-style="padding: 10px 20px;">
       <!-- banner -->
-  <el-carousel :interval="4000" type="card"  @change="changeBanner">
+  <el-carousel :interval="4000" type="card" height="220px" @change="changeBanner">
     <el-carousel-item v-for="(banner, index) in banners" :key="index" @click="clickBanner(banner)">
       <div class="banner-item">
         <el-image :src="banner.imageUrl" />
