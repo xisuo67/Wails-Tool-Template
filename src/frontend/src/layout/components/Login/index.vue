@@ -136,7 +136,7 @@ watch(showLogin, val => {
 }
 .loginDialog{
     min-height: 400px;
-    background: #f8f8f8 url("@/assets/images/loginBg.jpg") top
+    background: #ffffff url("@/assets/images/loginBg.jpg") top
         center/contain no-repeat !important;
 }
 
@@ -147,5 +147,4 @@ watch(showLogin, val => {
 #login .login-form-button {
     width: 100%;
 }
-
 </style>
