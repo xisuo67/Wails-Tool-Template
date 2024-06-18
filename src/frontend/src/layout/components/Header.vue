@@ -11,10 +11,6 @@
           <span class="flex-vertical-center login-icon">
             <el-avatar :size="30" :src="userInfo.avatarUrl" />
             <span class="text-14">{{ userInfo.userName }}</span>
-            <img src="./../../assets/images/vip.jpg" v-if="userInfo.vipType" class="img-vip" />
-            <span class="level">
-              <i>Lv.{{ userInfo.level }}</i>
-            </span>
             <DownOne theme="filled" size="18" :strokeWidth="2" />
           </span>
         </template>
@@ -28,6 +24,12 @@
         <span class="text-14">未登录</span>
         <DownOne theme="filled" size="18" :strokeWidth="2" />
       </span>
+      <div  v-if="hasLogin" class="action-icon">
+        <img src="./../../assets/images/vip.jpg" v-if="userInfo.vipType" class="img-vip" />
+            <span class="level">
+              <i>Lv.{{ userInfo.level }}</i>
+            </span>
+      </div>
       <div ref="userNewsBadgeRef" v-click-outside="onUserNewsClick">
         <el-badge is-dot class="action-icon" :offset="[0, 22]">
           <Mail theme="outline" size="20" :strokeWidth="2" />
@@ -96,12 +98,12 @@ const toSetting = () => {
   width: 30px;
   height: 12px;
   border-radius: 3px;
-  margin: 0 3px;
+  margin: 2px 3px;
 }
 
 .level {
   display: inline-block;
-  margin-left: 10px;
+  // margin-left: 10px;
   padding: 0 8px;
   line-height: 16px;
   height: 18px;
