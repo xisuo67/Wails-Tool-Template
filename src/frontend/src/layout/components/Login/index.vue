@@ -1,70 +1,61 @@
 <template>
   <!-- 登录弹窗 -->
-  <el-dialog 
-      v-model="showLogin" 
-      class="loginDialog"
-      :width="320" 
-      draggable 
-      :before-close="closeLogin">
-    <el-form id="login" ref="form">
-            <el-form-item>
-                <el-input
-                    placeholder="用户名"
-                >
-                    <!-- <a-icon
-                        slot="prefix"
-                        type="user"
-                        style="color: rgba(0, 0, 0, 0.25)"
-                    /> -->
-                </el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-input
-                    type="password"
-                    placeholder="密码"
-                >
-                    <!-- <a-icon
-                        slot="prefix"
-                        type="lock"
-                        style="color: rgba(0, 0, 0, 0.25)"
-                    /> -->
-                </el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button
-                    type="primary"
-                    class="login-form-button"
-                    >登录</el-button
-                >
-            </el-form-item>
-            <el-divider  class="enter-x">其他登录方式</el-divider>
-            <div class="flex justify-evenly enter-x login-sign-in-way" >
-              <Wechat class="anticon"/>
-              <TencentQq class="anticon"/>
-      <Github class="anticon"/>
-      <Twitter class="anticon"/>
-      <Alipay class="anticon"/>
-    </div>
-        </el-form>
+  <el-dialog v-model="showLogin" class="loginDialog" :width="320" draggable :before-close="closeLogin">
+    <el-form id="login" ref="form" :model="state.ruleForm">
+      <el-form-item>
+        <el-input placeholder="用户名">
+        </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input type="password" placeholder="密码">
+        </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" class="login-form-button" @click="onLogin">登录</el-button>
+      </el-form-item>
+      <el-divider class="enter-x">其他登录方式</el-divider>
+      <div class="flex justify-evenly enter-x login-sign-in-way">
+        <Wechat title="微信" class="anticon" />
+        <TencentQq title="QQ" class="anticon" />
+        <Github title="github" class="anticon" />
+        <Twitter title="Twitter" class="anticon" />
+        <Alipay title="Alipay"  class="anticon" />
+        <Google title="Google" class="anticon" />
+      </div>
+    </el-form>
   </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { Github,Wechat,Alipay,TencentQq,Google,Twitter } from '@icon-park/vue-next';
-import {onMounted, ref, watch} from "vue";
-import {storeToRefs} from "pinia";
+import { Github, Wechat, Alipay, TencentQq, Google, Twitter } from '@icon-park/vue-next';
+import { reactive, onMounted, ref, watch } from "vue";
+import { ElMessage } from 'element-plus'
+import { storeToRefs } from "pinia";
 // import {checkQR, getQR, getQrKey} from "@/api/login";
-import {useUserStore} from "@/stores/user";
+import { useUserStore } from "@/stores/user";
 import waiting from '@/assets/waiting-authorization.png'
 
 const userStore = useUserStore()
 const { showLogin } = storeToRefs(userStore)
 const { getUserInfo } = userStore
-
-onMounted(() => {
-  getUserInfo()
+const state = reactive({
+  showDialog: false,
+  isShowPassword: false,
+  ruleForm: {
+    userName: '',
+    password: '',
+    captchaId: '',
+    captchaData: '',
+  } as AuthLoginInput,
 })
+onMounted(() => {
+})
+const onLogin = () => {
+  getUserInfo()
+  showLogin.value=false;
+  ElMessage.success(`登录成功`)
 
+}
 let qrKey = ''
 /**
  * 0：初始化
@@ -84,8 +75,8 @@ async function toLogin() {
   qrImgLoading.value = true
   try {
     // qrKey = await getQrKey()
-    qrImg.value ='http://localhost:8080/discover'
-    qrStatus.value=801
+    qrImg.value = 'http://localhost:8080/discover'
+    qrStatus.value = 801
     qrImgLoading.value = false
     // timer = setInterval(checkQRHandler, 2000)
   } catch (e) {
@@ -118,33 +109,35 @@ watch(showLogin, val => {
 
 <style lang="scss">
 .login-sign-in-way {
-      .anticon {
-        color: #888;
-        font-size: 22px;
-        cursor: pointer;
+  .anticon {
+    color: #888;
+    font-size: 22px;
+    cursor: pointer;
 
-        &:hover {
-          color: rgb(236, 65, 65);
-        }
-      }
+    &:hover {
+      color: rgb(236, 65, 65);
     }
+  }
+}
+
 .justify-evenly {
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 }
+
 .flex {
-    display: flex;
+  display: flex;
 }
-.loginDialog{
-    min-height: 400px;
-    background: #ffffff url("@/assets/images/loginBg.jpg") top
-        center/contain no-repeat !important;
+
+.loginDialog {
+  min-height: 400px;
+  background: #ffffff url("@/assets/images/loginBg.jpg") top center/contain no-repeat !important;
 }
 
 #login {
-    margin-top: 180px;
+  margin-top: 180px;
 }
 
 #login .login-form-button {
-    width: 100%;
+  width: 100%;
 }
 </style>
