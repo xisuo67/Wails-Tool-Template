@@ -53,7 +53,7 @@ onMounted(() => {
 const onLogin = () => {
   getUserInfo()
   showLogin.value=false;
-  ElMessage.success(`登录成功`)
+  // ElMessage.success(`登录成功`)
 
 }
 let qrKey = ''

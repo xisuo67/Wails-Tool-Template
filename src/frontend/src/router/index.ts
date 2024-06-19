@@ -47,6 +47,18 @@ const router = createRouter({
                 },
             ]
         },
+        {
+            path: '/User',
+            component: Layout,
+            meta: { title: '个人信息' },
+            children: [
+                {
+                    path: 'details',
+                    component: () => import('@/views/User/index.vue'),
+                    meta: { title: '系统设置' }
+                },
+            ]
+        },
     ]
 })
 

@@ -4,12 +4,13 @@
   <el-row class="flex-1">
     <!-- RIGHT -->
     <el-col :span="24" class="flex-vertical-center justify-end setting">
-
+      <span  v-if="hasLogin" class="flex-vertical-center login-icon">
+        <el-avatar :size="30" :src="userInfo.avatarUrl" />
+      </span>
       <!-- login -->
       <el-popover v-if="hasLogin" placement="bottom" trigger="click" :width="200" :offset="0">
         <template #reference>
           <span class="flex-vertical-center login-icon">
-            <el-avatar :size="30" :src="userInfo.avatarUrl" />
             <span class="text-14">{{ userInfo.userName }}</span>
             <DownOne theme="filled" size="18" :strokeWidth="2" />
           </span>
@@ -20,7 +21,7 @@
       </el-popover>
 
       <span v-else class="flex-vertical-center login-icon" @click="toLogin">
-        <el-avatar :size="30" :src="userInfo.avatarUrl" />
+        <el-avatar :size="30" :src="userInfo.avatarUrl"/>
         <span class="text-14">未登录</span>
         <DownOne theme="filled" size="18" :strokeWidth="2" />
       </span>
@@ -90,6 +91,11 @@ const changeTheme = (theme: string) => {
 
 const toSetting = () => {
   router.push({ path: '/common/settings' })
+}
+
+const toUserDetail= () => {
+  debugger
+  router.push({ path: '/User/details' })
 }
 </script>
 
