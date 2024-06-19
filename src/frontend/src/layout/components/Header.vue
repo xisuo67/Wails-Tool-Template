@@ -5,7 +5,7 @@
     <!-- RIGHT -->
     <el-col :span="24" class="flex-vertical-center justify-end setting">
       <span  v-if="hasLogin" class="flex-vertical-center login-icon">
-        <el-avatar :size="30" :src="userInfo.avatarUrl" />
+        <el-avatar :size="30" :src="userInfo.avatarUrl" @click="toUserDetail"/>
       </span>
       <!-- login -->
       <el-popover v-if="hasLogin" placement="bottom" trigger="click" :width="200" :offset="0">

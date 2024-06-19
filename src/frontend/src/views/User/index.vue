@@ -2,16 +2,15 @@
     <div class="user-detail" v-if="hasLogin">
         <div class="user-detail-info">
             <div class="avatar-box">
-                <img v-lazy="`${userInfo.avatarUrl}?param=200y200`" class="avatar-img"
+                <el-avatar :src="userInfo.avatarUrl" class="avatar-img"
                     :key="userInfo.avatarUrl" />
             </div>
             <div class="intro-box">
                 <div class="row1">
-                    <span class="nickname">{{ userInfo.nickname }}</span>
+                    <span class="nickname">{{ userInfo.userName }}</span>
                     <img src="./../../assets/images/vip.jpg" v-if="userInfo.vipType" class="img-vip" />
                     <span class="level">
-                        <z-icon type="Lv" />
-                        <i>.{{ userInfo.level }}</i>
+                        <i>Lv.{{ userInfo.level }}</i>
                     </span>
                     <div class="extra">
                         <!-- <a-button-group size="small">
@@ -45,7 +44,7 @@
                         <div>粉丝</div>
                     </router-link>
                 </nav> -->
-                <div class="row3">个人介绍:
+                <div class="row3">简介:
                     {{
                         userInfo.description
                             ? userInfo.description
@@ -102,7 +101,13 @@ const userStore = useUserStore()
 const { hasLogin, userInfo } = storeToRefs(userStore)
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+.img-vip {
+    width: 30px;
+    height: 12px;
+    border-radius: 3px;
+    margin: 0 3px;
+}
 .size(@width: 100px, @height: 100px) {
     width: @width;
     height: @height;
