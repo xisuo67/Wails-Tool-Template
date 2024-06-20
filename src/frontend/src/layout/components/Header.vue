@@ -2,10 +2,9 @@
   <el-image :src="logo" class="logo" style="" />
   <span style="width: 180px;">Geek工具</span>
   <el-row class="flex-1">
-    <!-- RIGHT -->
     <el-col :span="24" class="flex-vertical-center justify-end setting">
-      <span  v-if="hasLogin" class="flex-vertical-center login-icon">
-        <el-avatar :size="30" :src="userInfo.avatarUrl" @click="toUserDetail"/>
+      <span v-if="hasLogin" class="flex-vertical-center login-icon">
+        <el-avatar :size="30" :src="userInfo.avatarUrl" @click="toUserDetail" />
       </span>
       <!-- login -->
       <el-popover v-if="hasLogin" placement="bottom" trigger="click" :width="200" :offset="0">
@@ -15,21 +14,27 @@
             <DownOne theme="filled" size="18" :strokeWidth="2" />
           </span>
         </template>
-        <div style="cursor: pointer;" @click="exitLogin">
-          <Power theme="filled" size="18" :strokeWidth="2" />退出登录
+        <div class="menu">
+          <div style="cursor: pointer;" @click="onSubscribe">
+            <Vip theme="filled" size="18" :strokeWidth="2" />我的订阅
+          </div>
+          <el-divider />
+          <div style="cursor: pointer;" @click="exitLogin">
+            <Power theme="filled" size="18" :strokeWidth="2" />退出登录
+          </div>
         </div>
       </el-popover>
 
       <span v-else class="flex-vertical-center login-icon" @click="toLogin">
-        <el-avatar :size="30" :src="userInfo.avatarUrl"/>
+        <el-avatar :size="30" :src="userInfo.avatarUrl" />
         <span class="text-14">未登录</span>
         <DownOne theme="filled" size="18" :strokeWidth="2" />
       </span>
-      <div  v-if="hasLogin" class="action-icon">
+      <div v-if="hasLogin" class="action-icon">
         <img src="./../../assets/images/vip.jpg" v-if="userInfo.vipType" class="img-vip" />
-            <span class="level">
-              <i>Lv.{{ userInfo.level }}</i>
-            </span>
+        <span class="level">
+          <i>Lv.{{ userInfo.level }}</i>
+        </span>
       </div>
       <div ref="userNewsBadgeRef" v-click-outside="onUserNewsClick">
         <el-badge is-dot class="action-icon" :offset="[0, 22]">
@@ -58,11 +63,13 @@
       </el-popover>
     </el-col>
   </el-row>
+  <VipSubscribe ref="vipSubscribeRef" />
 </template>
 
 <script setup lang="ts">
 import { defineAsyncComponent, ref, unref, computed, reactive, onMounted } from 'vue';
-import { Left, Right, DownOne, Theme, SettingTwo, Mail, Power, CheckOne } from '@icon-park/vue-next';
+import { Vip, DownOne, Theme, SettingTwo, Mail, Power, CheckOne } from '@icon-park/vue-next';
+import VipSubscribe from '@/views/Subscribe/index.vue';
 import logo from '@/assets/logo.png'
 import { storeToRefs } from "pinia";
 import { useUserStore } from "@/stores/user";
@@ -78,7 +85,7 @@ const userNewsBadgeRef = ref();
 const userStore = useUserStore()
 const { hasLogin, userInfo } = storeToRefs(userStore)
 const { toLogin, exitLogin } = userStore
-
+const vipSubscribeRef = ref()
 const { currentTheme } = storeToRefs(useAppStore())
 // 消息通知点击时
 const onUserNewsClick = () => {
@@ -88,13 +95,14 @@ const changeTheme = (theme: string) => {
   currentTheme.value = theme
   document.body.className = theme === 'red' ? '' : theme
 }
-
+const onSubscribe=()=>{
+  vipSubscribeRef.value.open(123)
+}
 const toSetting = () => {
   router.push({ path: '/common/settings' })
 }
 
-const toUserDetail= () => {
-  debugger
+const toUserDetail = () => {
   router.push({ path: '/User/details' })
 }
 </script>
@@ -105,6 +113,11 @@ const toUserDetail= () => {
   height: 12px;
   border-radius: 3px;
   margin: 2px 3px;
+}
+
+.menu {
+  padding-left: 12px;
+  padding-top: 12px;
 }
 
 .level {

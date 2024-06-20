@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { Github, Wechat, Alipay, TencentQq, Google, Twitter } from '@icon-park/vue-next';
 import { reactive, onMounted, ref, watch } from "vue";
-import { ElMessage } from 'element-plus'
+// import { ElMessage } from 'element-plus'
 import { storeToRefs } from "pinia";
 // import {checkQR, getQR, getQrKey} from "@/api/login";
 import { useUserStore } from "@/stores/user";
@@ -53,7 +53,8 @@ onMounted(() => {
 const onLogin = () => {
   getUserInfo()
   showLogin.value=false;
-  // ElMessage.success(`登录成功`)
+  ElMessage.success(`登录成功`)
+  debugger  
 
 }
 let qrKey = ''

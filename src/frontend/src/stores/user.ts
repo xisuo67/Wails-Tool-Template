@@ -1,8 +1,6 @@
 import {useRouter} from "vue-router";
 import { defineStore } from 'pinia'
 import {reactive, ref} from "vue";
-// import {checkLogin, logout} from "@/api/login";
-// import {likedSongs, playList} from "@/api/user";
 import {AppList} from "@/models/App";
 import defaultCoverImage from "@/assets/playlist-cover.png";
 
@@ -53,7 +51,8 @@ export const useUserStore = defineStore('user', () => {
         userInfo.userId = logoutUserInfo.userId
         userInfo.userName = logoutUserInfo.userName
         userInfo.avatarUrl = logoutUserInfo.avatarUrl
-        router.push('/')
+        debugger
+        router.push({ path: '/' })
     }
 
     const defaultMyPlayList: { liked: AppList, created: AppList[], collected: AppList[] } = {
