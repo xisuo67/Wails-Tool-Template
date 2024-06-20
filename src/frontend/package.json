@@ -11,7 +11,7 @@
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
     "axios": "^1.2.2",
-    "element-plus": "2.3.8",
+    "element-plus": "^2.3.8",
     "pinia": "^2.0.28",
     "vue": "^3.2.37",
     "vue-router": "^4.1.6"
@@ -20,6 +20,7 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "gh-pages": "^6.1.1",
     "less": "^4.2.0",
+    "qrcode": "^1.5.3",
     "sass": "^1.57.1",
     "terser": "^5.29.2",
     "typescript": "^4.6.4",

@@ -36,8 +36,8 @@
           <i>Lv.{{ userInfo.level }}</i>
         </span>
       </div>
-      <div ref="userNewsBadgeRef" v-click-outside="onUserNewsClick">
-        <el-badge is-dot class="action-icon" :offset="[0, 22]">
+      <div ref="userNewsBadgeRef"  class="action-icon" v-click-outside="onUserNewsClick">
+        <el-badge is-dot :offset="[0, 12]">
           <Mail theme="outline" size="20" :strokeWidth="2" />
         </el-badge>
       </div>

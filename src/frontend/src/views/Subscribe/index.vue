@@ -1,5 +1,19 @@
 <template>
   <el-dialog v-loading="loading" v-model="visible" :title="`【${detail?.name}】订阅`" width="900px">
+    <el-row>
+    <el-col :span="2"><div style="font-size: 14px;font-weight: 700;">选择订阅</div></el-col>
+    <el-col :span="22">
+      <el-select v-model="subscribePriceId" placeholder="请选择订阅价格" @change="onChange">
+        <el-option v-for="item in subscribePriceOpts" :key="item.id" :value="item.id" :label="`${item.duration}${[
+          { value: 0, text: '天' },
+          { value: 1, text: '月' },
+          { value: 2, text: '年' },
+        ].find((ele) => ele.value === item.durationTypeEnum)?.text
+          }${item.price}元`">
+        </el-option>
+      </el-select>
+    </el-col>
+  </el-row>
     <div class="vipChooseWrap">
       <div class="column">
         <div class="row">权益对比</div>
@@ -31,24 +45,12 @@
       </div>
       <div class="column custom">
         <div  class="qr-box">
-          <img alt="" class="qr-image" src="@/assets/images/qrcode/QR.png">
+          <QrCode class="qr-image" value="https://u.wechat.com/EJQ2hKjIeevSOA6Y3Lo27Pk?s=2" :width="160" />
             <img class="scan-image" src="@/assets/images/qrcode/scan.png">
-          <div class="wechat-title"> 扫码注册
+          <div class="wechat-title"> 扫码支付
           </div>
         </div>
       </div>
-    </div>
-    <div style="margin-bottom: 5px; font-size: 14px;font-weight: 700;">订阅选择</div>
-    <div>
-      <el-select v-model="subscribePriceId" placeholder="请选择订阅价格" @change="onChange">
-        <el-option v-for="item in subscribePriceOpts" :key="item.id" :value="item.id" :label="`${item.duration}${[
-          { value: 0, text: '天' },
-          { value: 1, text: '月' },
-          { value: 2, text: '年' },
-        ].find((ele) => ele.value === item.durationTypeEnum)?.text
-          }${item.price}元`">
-        </el-option>
-      </el-select>
     </div>
     <!-- <el-select
       v-model="subscribePriceId"
@@ -67,6 +69,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { QrCode } from '@/components/Qrcode/index'
 import {
   SubscribeTypeOutput,
   VipDictTypeGetPageOutput,
@@ -174,17 +177,13 @@ const onSubscribe = () => {
     padding: 0 50px;
     text-align: center
 }
-.qr-box .qr-image{
-    width: 160px;
-    height: 160px
-}
 .qr-box .scan-image{
     position: absolute;
     top: 50%;
     left: 50%;
     z-index: 999;
     width: 200px;
-    height: 170px;
+    height: 160px;
     transform: translate(-50%,-80%)
 }
 }
