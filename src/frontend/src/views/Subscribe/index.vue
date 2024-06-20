@@ -1,10 +1,5 @@
 <template>
-  <el-dialog
-    v-loading="loading"
-    v-model="visible"
-    :title="`【${detail?.name}】订阅`"
-    width="800px"
-  >
+  <el-dialog v-loading="loading" v-model="visible" :title="`【${detail?.name}】订阅`" width="900px">
     <div class="vipChooseWrap">
       <div class="column">
         <div class="row">权益对比</div>
@@ -12,24 +7,17 @@
           {{ item.name }}
         </div>
       </div>
-      <div
-        v-for="(item, index) in services"
-        :key="index"
-        class="column"
-        :class="{
-          choosed: (item.id as number) === choosedId,
-        }"
-        @click="
-          () => {
-            choosedId = item.id
-          }
-        "
-      >
+      <div v-for="(item, index) in services" :key="index" class="column" :class="{
+        choosed: (item.id as number) === choosedId,
+      }" @click="() => {
+        choosedId = item.id
+      }
+        ">
         <div class="row">{{ item.licensesType }}</div>
         <div v-for="(cItem, cIndex) in functionList" :key="cIndex" class="row">
           {{
             item.subscribeFunctionOutputs &&
-            item.subscribeFunctionOutputs[cIndex].hasFunction
+              item.subscribeFunctionOutputs[cIndex].hasFunction
               ? '√'
               : '×'
           }}
@@ -41,26 +29,24 @@
         <div class="small-info">为您的团队和组织赋能</div>
         <el-button type="primary">咨询购买</el-button>
       </div>
+      <div class="column custom">
+        <div  class="qr-box">
+          <img alt="" class="qr-image" src="@/assets/images/qrcode/QR.png">
+            <img class="scan-image" src="@/assets/images/qrcode/scan.png">
+          <div class="wechat-title"> 扫码注册
+          </div>
+        </div>
+      </div>
     </div>
     <div style="margin-bottom: 5px; font-size: 14px;font-weight: 700;">订阅选择</div>
     <div>
-      <el-select
-        v-model="subscribePriceId"
-        placeholder="请选择订阅价格"
-        @change="onChange"
-      >
-        <el-option
-          v-for="item in subscribePriceOpts"
-          :key="item.id"
-          :value="item.id"
-          :label="`${item.duration}${
-            [
-              { value: 0, text: '天' },
-              { value: 1, text: '月' },
-              { value: 2, text: '年' },
-            ].find((ele) => ele.value === item.durationTypeEnum)?.text
-          }${item.price}元`"
-        >
+      <el-select v-model="subscribePriceId" placeholder="请选择订阅价格" @change="onChange">
+        <el-option v-for="item in subscribePriceOpts" :key="item.id" :value="item.id" :label="`${item.duration}${[
+          { value: 0, text: '天' },
+          { value: 1, text: '月' },
+          { value: 2, text: '年' },
+        ].find((ele) => ele.value === item.durationTypeEnum)?.text
+          }${item.price}元`">
         </el-option>
       </el-select>
     </div>
@@ -96,9 +82,9 @@ const visible = ref(false)
 const choosedId = ref<number>()
 
 const detail = ref<SubscribeTypeOutput>()
-const subscribePriceOptions=ref<Array<SubscribePriceOutput>>()
+const subscribePriceOptions = ref<Array<SubscribePriceOutput>>()
 const functionList = computed(() => {
-  
+
   const subscribeLicensesOutput = detail.value?.subscribeLicensesOutputs
   return (
     (subscribeLicensesOutput &&
@@ -117,13 +103,13 @@ const subscribePriceOpts = computed(() => {
 })
 
 const subscribePriceId = ref<number>()
-const onChange = () => {}
+const onChange = () => { }
 defineExpose({
   open: async (id: number) => {
     //TODO:这里传入订阅id,调用接口返回数据，使用mock数据暂时替代
-    var data=vipDataList
+    var data = vipDataList
     detail.value = data
-    subscribePriceOptions.value=detail.value?.subscribePriceOutputs|| []
+    subscribePriceOptions.value = detail.value?.subscribePriceOutputs || []
     visible.value = true
   },
 })
@@ -145,6 +131,7 @@ const onSubscribe = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     &:not(:last-child) {
       border-right: 1px solid var(--el-border-color-light);
     }
@@ -153,29 +140,52 @@ const onSubscribe = () => {
       font-size: 18px;
       font-weight: 600;
     }
+
     .small-info {
       font-size: 12px;
       color: var(--el-text-color-secondary);
     }
+
     .row {
       width: 100%;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
+
       &:not(:last-child) {
         border-bottom: 1px solid var(--el-border-color-light);
       }
     }
+
     &.choosed {
       border: 1px solid #d9ba87;
       background-color: rgba(#d9ba87, 0.3);
     }
+
     &.custom {
-      > div {
+      >div {
         margin-bottom: 4px;
       }
     }
   }
+  .qr-box{
+    position: relative;
+    padding: 0 50px;
+    text-align: center
+}
+.qr-box .qr-image{
+    width: 160px;
+    height: 160px
+}
+.qr-box .scan-image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 200px;
+    height: 170px;
+    transform: translate(-50%,-80%)
+}
 }
 </style>
