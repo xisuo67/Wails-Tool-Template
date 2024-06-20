@@ -1,3 +1,54 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import {
+  SubscribeTypeOutput,
+  VipDictTypeGetPageOutput,
+} from '@/models/Subscribe'
+import {
+  vipDataList
+} from '@/views/mock/SubscribeMock'
+
+const loading = ref(false)
+const visible = ref(false)
+
+const choosedId = ref<number>()
+
+const detail = ref<SubscribeTypeOutput>()
+const functionList = computed(() => {
+  
+  const subscribeLicensesOutput = detail.value?.subscribeLicensesOutputs
+  return (
+    (subscribeLicensesOutput &&
+      subscribeLicensesOutput[0]?.subscribeFunctionOutputs) ||
+    []
+  )
+})
+const services = computed(() => {
+  const subscribeLicensesOutput = detail.value?.subscribeLicensesOutputs
+  return subscribeLicensesOutput || []
+})
+
+const subscribePriceOpts = computed(() => {
+  const subscribePriceOutputs = detail.value?.subscribePriceOutputs
+  return subscribePriceOutputs || []
+})
+
+const subscribePriceId = ref<number>()
+const onChange = () => {}
+defineExpose({
+  open: async (id: number) => {
+    //TODO:这里传入订阅id,调用接口返回数据，使用mock数据暂时替代
+    var data=vipDataList
+    detail.value = data
+    visible.value = true
+  },
+})
+
+
+const onSubscribe = () => {
+
+}
+</script>
 <template>
   <el-dialog
     v-loading="loading"
@@ -64,66 +115,9 @@
         </el-option>
       </el-select>
     </div>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button type="primary" @click="onSubscribe">
-          捐赠
-        </el-button>
-      </span>
-    </template>
   </el-dialog>
 </template>
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-import {
-  SubscribeTypeOutput,
-  VipDictTypeGetPageOutput,
-} from '@/models/Subscribe'
-import {
-  vipDataList
-} from '@/views/mock/SubscribeMock'
 
-const loading = ref(false)
-const visible = ref(false)
-
-const choosedId = ref<number>()
-
-const detail = ref<SubscribeTypeOutput>()
-const functionList = computed(() => {
-  const subscribeLicensesOutput = detail.value?.subscribeLicensesOutputs
-  return (
-    (subscribeLicensesOutput &&
-      subscribeLicensesOutput[0]?.subscribeFunctionOutputs) ||
-    []
-  )
-})
-const services = computed(() => {
-  const subscribeLicensesOutput = detail.value?.subscribeLicensesOutputs
-  return subscribeLicensesOutput || []
-})
-
-const subscribePriceOpts = computed(() => {
-  const subscribePriceOutputs = detail.value?.subscribePriceOutputs
-  return subscribePriceOutputs || []
-})
-
-const subscribePriceId = ref<number>()
-const onChange = () => {}
-defineExpose({
-  open: async (id: number) => {
-    //TODO:这里传入订阅id,调用接口返回数据，使用mock数据暂时替代
-    var data=vipDataList
-    detail.value = data
-    console.log(data.subscribeLicensesOutputs[0].subscribeFunctionOutputs)
-    visible.value = true
-  },
-})
-
-
-const onSubscribe = () => {
-
-}
-</script>
 <style scoped lang="scss">
 .vipChooseWrap {
   display: flex;

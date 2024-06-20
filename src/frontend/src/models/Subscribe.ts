@@ -21,7 +21,7 @@ export interface SubscribeTypeOutput {
   /** 订阅价格 */
 export interface SubscribePriceOutput {
     /** @format int64 */
-    id?: number
+    id: number
     /** @format int64 */
     vipDictTypeId?: number
     /** @format int32 */

@@ -11,7 +11,7 @@
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
     "axios": "^1.2.2",
-    "element-plus": "^2.7.5",
+    "element-plus": "2.3.8",
     "pinia": "^2.0.28",
     "vue": "^3.2.37",
     "vue-router": "^4.1.6"

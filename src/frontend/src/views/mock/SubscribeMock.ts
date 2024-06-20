@@ -4,7 +4,7 @@ export const vipDataList:SubscribeTypeOutput=
     "id": 491583742283845,
     "name": "Geek工具",
     "code": "Geek工具",
-    "description": "订阅Geek工具",
+    "description": "订阅【Geek工具】",
     "isTestingPhase": true,
     "subscribePriceOutputs": [
         {
@@ -40,7 +40,7 @@ export const vipDataList:SubscribeTypeOutput=
             "id": 491583781937221,
             "vipDictTypeId": 491583742283845,
             "licensesDictTypeId": 446347791020101,
-            "licensesType": "XHS.Spider",
+            "licensesType": "Geek工具-基础版",
             "description": null,
             "sort": 1,
             "subscribeFunctionOutputs": [
@@ -54,52 +54,52 @@ export const vipDataList:SubscribeTypeOutput=
                 {
                     "id": 491583962832965,
                     "vipDictTypeId": 491583742283845,
-                    "name": "关键字",
+                    "name": "A功能",
                     "hasFunction": false,
                     "sort": 4
                 },
                 {
                     "id": 491584014618693,
                     "vipDictTypeId": 491583742283845,
-                    "name": "下载服务",
+                    "name": "B功能",
                     "hasFunction": false,
                     "sort": 5
                 },
                 {
                     "id": 504287769878597,
                     "vipDictTypeId": 491583742283845,
-                    "name": "批量导入",
+                    "name": "C功能",
                     "hasFunction": false,
                     "sort": 6
                 },
                 {
                     "id": 504288409276485,
                     "vipDictTypeId": 491583742283845,
-                    "name": "导出评论",
+                    "name": "D功能",
                     "hasFunction": false,
                     "sort": 7
                 },
                 {
                     "id": 504288789712965,
                     "vipDictTypeId": 491583742283845,
-                    "name": "关注批量解析",
+                    "name": "E功能",
                     "hasFunction": false,
                     "sort": 8
                 },
                 {
                     "id": 504289021767749,
                     "vipDictTypeId": 491583742283845,
-                    "name": "导出Excel",
+                    "name": "F功能",
                     "hasFunction": false,
                     "sort": 9
                 }
             ]
         },
         {
-            "id": 491583805395013,
+            "id": 559919135850565,
             "vipDictTypeId": 491583742283845,
             "licensesDictTypeId": 472975509233733,
-            "licensesType": "小红兔（电子宠物）-基础版",
+            "licensesType": "Geek工具-Pro版",
             "description": null,
             "sort": 2,
             "subscribeFunctionOutputs": [
@@ -113,161 +113,43 @@ export const vipDataList:SubscribeTypeOutput=
                 {
                     "id": 491583962832965,
                     "vipDictTypeId": 491583742283845,
-                    "name": "关键字",
+                    "name": "A功能",
                     "hasFunction": true,
                     "sort": 4
                 },
                 {
                     "id": 491584014618693,
                     "vipDictTypeId": 491583742283845,
-                    "name": "下载服务",
+                    "name": "B功能",
                     "hasFunction": true,
                     "sort": 5
                 },
                 {
                     "id": 504287769878597,
                     "vipDictTypeId": 491583742283845,
-                    "name": "批量导入",
+                    "name": "C功能",
                     "hasFunction": true,
                     "sort": 6
                 },
                 {
                     "id": 504288409276485,
                     "vipDictTypeId": 491583742283845,
-                    "name": "导出评论",
+                    "name": "D功能",
                     "hasFunction": true,
                     "sort": 7
                 },
                 {
                     "id": 504288789712965,
                     "vipDictTypeId": 491583742283845,
-                    "name": "关注批量解析",
+                    "name": "E功能",
                     "hasFunction": true,
                     "sort": 8
                 },
                 {
                     "id": 504289021767749,
                     "vipDictTypeId": 491583742283845,
-                    "name": "导出Excel",
+                    "name": "F功能",
                     "hasFunction": true,
-                    "sort": 9
-                }
-            ]
-        },
-        {
-            "id": 559857021694021,
-            "vipDictTypeId": 491583742283845,
-            "licensesDictTypeId": 485033689342021,
-            "licensesType": "BrightMText",
-            "description": null,
-            "sort": 3,
-            "subscribeFunctionOutputs": [
-                {
-                    "id": 491583855325253,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "广告",
-                    "hasFunction": false,
-                    "sort": 1
-                },
-                {
-                    "id": 491583962832965,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "关键字",
-                    "hasFunction": false,
-                    "sort": 4
-                },
-                {
-                    "id": 491584014618693,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "下载服务",
-                    "hasFunction": false,
-                    "sort": 5
-                },
-                {
-                    "id": 504287769878597,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "批量导入",
-                    "hasFunction": false,
-                    "sort": 6
-                },
-                {
-                    "id": 504288409276485,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "导出评论",
-                    "hasFunction": false,
-                    "sort": 7
-                },
-                {
-                    "id": 504288789712965,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "关注批量解析",
-                    "hasFunction": false,
-                    "sort": 8
-                },
-                {
-                    "id": 504289021767749,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "导出Excel",
-                    "hasFunction": false,
-                    "sort": 9
-                }
-            ]
-        },
-        {
-            "id": 559857078050885,
-            "vipDictTypeId": 491583742283845,
-            "licensesDictTypeId": 476892654346309,
-            "licensesType": "Youtube.Spider",
-            "description": null,
-            "sort": 4,
-            "subscribeFunctionOutputs": [
-                {
-                    "id": 491583855325253,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "广告",
-                    "hasFunction": false,
-                    "sort": 1
-                },
-                {
-                    "id": 491583962832965,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "关键字",
-                    "hasFunction": false,
-                    "sort": 4
-                },
-                {
-                    "id": 491584014618693,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "下载服务",
-                    "hasFunction": false,
-                    "sort": 5
-                },
-                {
-                    "id": 504287769878597,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "批量导入",
-                    "hasFunction": false,
-                    "sort": 6
-                },
-                {
-                    "id": 504288409276485,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "导出评论",
-                    "hasFunction": false,
-                    "sort": 7
-                },
-                {
-                    "id": 504288789712965,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "关注批量解析",
-                    "hasFunction": false,
-                    "sort": 8
-                },
-                {
-                    "id": 504289021767749,
-                    "vipDictTypeId": 491583742283845,
-                    "name": "导出Excel",
-                    "hasFunction": false,
                     "sort": 9
                 }
             ]
