@@ -1,5 +1,5 @@
 <template>
-  <el-dialog v-loading="loading" v-model="visible" :title="`【${detail?.name}】订阅`" width="900px">
+  <el-dialog v-loading="loading" class="subscribeDialog" v-model="visible" :title="`【${detail?.name}】订阅`" width="900px">
     <el-row>
     <el-col :span="2"><div style="font-size: 14px;font-weight: 700;">选择订阅</div></el-col>
     <el-col :span="22">
@@ -122,6 +122,10 @@ const onSubscribe = () => {
 }
 </script>
 <style lang="scss">
+.subscribeDialog{
+  min-height: 400px;
+  background: #FFDBCA;
+}
 .vipChooseWrap {
   display: flex;
   border: 1px solid var(--el-border-color-light);
@@ -162,8 +166,8 @@ const onSubscribe = () => {
     }
 
     &.choosed {
-      border: 1px solid #d9ba87;
-      background-color: rgba(#d9ba87, 0.3);
+      border: 1px solid #FF3A3A;
+      background-color: rgba(#FF6558, 0.3);
     }
 
     &.custom {
