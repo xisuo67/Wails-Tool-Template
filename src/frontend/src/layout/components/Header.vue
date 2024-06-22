@@ -37,7 +37,7 @@
         </span>
       </div>
       <div ref="userNewsBadgeRef"  class="action-icon" v-click-outside="onUserNewsClick">
-        <el-badge is-dot :offset="[0, 12]">
+        <el-badge is-dot :offset="[0, 22]">
           <Mail theme="outline" size="20" :strokeWidth="2" />
         </el-badge>
       </div>

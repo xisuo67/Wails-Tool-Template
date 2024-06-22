@@ -1,15 +1,16 @@
 <template>
   <el-dialog
     v-loading="loading"
+    draggable
     class="subscribeDialog"
     v-model="visible"
     width="900px"
   >
-    <el-row>
+  <el-row>
       <el-col :span="2"
         ><div style="font-size: 14px; font-weight: 700">选择订阅</div></el-col
       >
-      <el-col :span="22">
+      <el-col :span="6">
         <el-select
           v-model="subscribePriceId"
           placeholder="请选择订阅价格"
@@ -79,19 +80,6 @@
         </div>
       </div>
     </div>
-    <!-- <el-select
-      v-model="subscribePriceId"
-      placeholder="Select"
-      size="small"
-      style="width: 240px"
-    >
-      <el-option
-        v-for="item in subscribePriceOptions"
-        :key="item.id"
-        :label="item.price"
-        :value="item.id"
-      />
-    </el-select> -->
   </el-dialog>
 </template>
 <script setup lang="ts">
@@ -134,21 +122,9 @@ const subscribePriceOpts = computed(() => {
   return subscribePriceOutputs || [];
 });
 const startScan=async()=>{
-  theInterval = window.setInterval(async () => {
-      time += intevalTimeout
-      if (time > timeout) {
-        return stop()
-      }
-      else{
-        debugger
-        scanImg.value=scanImage;
-      }
-    }, intevalTimeout)
+  scanImg.value='';
+    scanImg.value='/src/assets/images/qrcode/scan.png';
 }
-const stop = () => {
-    isTimeout.value = true
-    theInterval && clearInterval(theInterval)
-  }
 const subscribePriceId = ref<number>();
 const onChange = () => {};
 defineExpose({
@@ -158,6 +134,7 @@ defineExpose({
     detail.value = data;
     subscribePriceOptions.value = detail.value?.subscribePriceOutputs || [];
     visible.value = true;
+    scanImg.value='/src/assets/images/qrcode/scan.png';
     startScan();
   },
 });
@@ -168,7 +145,6 @@ const onSubscribe = () => {};
 .subscribeDialog {
   min-height: 400px;
   background: #fef4de;
-  overflow: hidden;
   border-radius: 15px;
 }
 .el-dialog__header {

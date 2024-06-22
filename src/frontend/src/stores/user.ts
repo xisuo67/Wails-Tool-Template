@@ -4,9 +4,9 @@ import {reactive, ref} from "vue";
 import {AppList} from "@/models/App";
 import defaultCoverImage from "@/assets/playlist-cover.png";
 
-const router = useRouter()
 
 export const useUserStore = defineStore('user', () => {
+    const router = useRouter()
     const hasLogin = ref(false)
     const showLogin = ref(false)
     const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
@@ -51,7 +51,8 @@ export const useUserStore = defineStore('user', () => {
         userInfo.userId = logoutUserInfo.userId
         userInfo.userName = logoutUserInfo.userName
         userInfo.avatarUrl = logoutUserInfo.avatarUrl
-        router.push({ path: '/' })
+        debugger
+        router.push({ path: '/discover' })
     }
 
     const defaultMyPlayList: { liked: AppList, created: AppList[], collected: AppList[] } = {
