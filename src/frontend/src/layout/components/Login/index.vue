@@ -54,7 +54,6 @@ const onLogin = () => {
   getUserInfo()
   showLogin.value=false;
   ElMessage.success(`登录成功`)
-  debugger  
 
 }
 let qrKey = ''
