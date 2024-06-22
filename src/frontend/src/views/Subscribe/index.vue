@@ -5,6 +5,7 @@
     class="subscribeDialog"
     v-model="visible"
     width="900px"
+    :before-close="close"
   >
   <el-row>
       <el-col :span="2"
@@ -140,6 +141,9 @@ defineExpose({
 });
 const value = ref("");
 const onSubscribe = () => {};
+const close=()=> {
+  visible.value = false
+}
 </script>
 <style lang="scss">
 .subscribeDialog {

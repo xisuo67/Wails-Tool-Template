@@ -51,8 +51,7 @@ export const useUserStore = defineStore('user', () => {
         userInfo.userId = logoutUserInfo.userId
         userInfo.userName = logoutUserInfo.userName
         userInfo.avatarUrl = logoutUserInfo.avatarUrl
-        debugger
-        router.push({ path: '/discover' })
+        router.push({ path: '/' })
     }
 
     const defaultMyPlayList: { liked: AppList, created: AppList[], collected: AppList[] } = {
