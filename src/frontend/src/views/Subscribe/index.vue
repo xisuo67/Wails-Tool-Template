@@ -84,8 +84,9 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref , onMounted, onBeforeUnmount, nextTick } from "vue";
 import { QrCode } from "@/components/Qrcode/index";
+// const scanImage = ref<string>(require('@/assets/images/qrcode/scan.png'));
 import scanImage from "@/assets/images/qrcode/scan.png";
 import {
   SubscribeTypeOutput,
@@ -96,11 +97,7 @@ import { vipDataList } from "@/views/mock/SubscribeMock";
 const scanImg=ref('');
 const loading = ref(false);
 const visible = ref(false);
-const timeout=180 * 1000
-const intevalTimeout = 3 * 1000
-const isTimeout = ref(false)
-let theInterval: number | null
-let time = 0
+let interval: number | undefined;
 const choosedId = ref<number>();
 
 const detail = ref<SubscribeTypeOutput>();
@@ -122,9 +119,23 @@ const subscribePriceOpts = computed(() => {
   const subscribePriceOutputs = detail.value?.subscribePriceOutputs;
   return subscribePriceOutputs || [];
 });
-const startScan=async()=>{
-  scanImg.value='';
-    scanImg.value='/src/assets/images/qrcode/scan.png';
+// 定义启动定时器的方法
+const startImageRefresh = () => {
+  interval = window.setInterval(() => {
+    refreshImage();
+  }, 2900); // 设置间隔时间
+};
+// 定义停止定时器的方法
+const stopImageRefresh = () => {
+  if (interval) {
+    clearInterval(interval);
+  }
+};
+const refreshImage =async()=>{
+  scanImg.value = ''; // 清空图片
+  nextTick(() => {
+    scanImg.value = scanImage; // 重新赋值图片路径
+  });
 }
 const subscribePriceId = ref<number>();
 const onChange = () => {};
@@ -135,9 +146,17 @@ defineExpose({
     detail.value = data;
     subscribePriceOptions.value = detail.value?.subscribePriceOutputs || [];
     visible.value = true;
-    scanImg.value='/src/assets/images/qrcode/scan.png';
-    startScan();
+
   },
+});
+// 在组件挂载时启动定时器
+onMounted(() => {
+  startImageRefresh();
+});
+
+// 在组件卸载前停止定时器
+onBeforeUnmount(() => {
+  stopImageRefresh();
 });
 const value = ref("");
 const onSubscribe = () => {};

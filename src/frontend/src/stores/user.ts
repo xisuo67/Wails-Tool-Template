@@ -1,10 +1,6 @@
 import {useRouter} from "vue-router";
 import { defineStore } from 'pinia'
 import {reactive, ref} from "vue";
-import {AppList} from "@/models/App";
-import defaultCoverImage from "@/assets/playlist-cover.png";
-
-
 export const useUserStore = defineStore('user', () => {
     const router = useRouter()
     const hasLogin = ref(false)
@@ -31,12 +27,12 @@ export const useUserStore = defineStore('user', () => {
         level:0,
     })
 
-    function toLogin() {
+    const toLogin=()=> {
         if (hasLogin.value) return
         showLogin.value = true
     }
 
-    function getUserInfo() {
+    const getUserInfo=()=> {
             userInfo.userId = mockUserInfo.userId
             userInfo.userName = mockUserInfo.nickname
             userInfo.avatarUrl = mockUserInfo.avatarUrl
@@ -53,61 +49,8 @@ export const useUserStore = defineStore('user', () => {
         userInfo.avatarUrl = logoutUserInfo.avatarUrl
         router.push({ path: '/' })
     }
-
-    const defaultMyPlayList: { liked: AppList, created: AppList[], collected: AppList[] } = {
-        liked: {
-            name: '我喜欢的音乐',
-            id: -1,
-            userId: userInfo.userId,
-            coverImgUrl: defaultCoverImage,
-            coverImgId: -1,
-            createTime: 0,
-            updateTime: 0,
-            description: '',
-            tags: [],
-            trackUpdateTime: 0,
-            trackCount: 0,
-            playCount: 0,
-            specialType: 0,
-            totalDuration: 0,
-            creator: null,
-            tracks: [],
-            subscribed: false,
-            subscribers: [],
-            subscribedCount: 0,
-            commentThreadId: '',
-            newImported: false,
-            adType: 0,
-            highQuality: false,
-            privacy: 0,
-            ordered: false
-        },
-        created: [],
-        collected: []
-    }
-    const myPlayList = ref<{ liked: AppList, created: AppList[], collected: AppList[] }>(defaultMyPlayList)
-
-    function getMyPlayList() {
-        // playList(userInfo.userId).then(res => {
-        //     myPlayList.value = {
-        //         liked: res[0],
-        //         created: res.slice(1, res.length).filter(item => item.creator?.userId === userInfo.userId),
-        //         collected: res.slice(1, res.length).filter(item => item.creator?.userId !== userInfo.userId)
-        //     }
-        // })
-    }
-
-    const myLikedSongIds = ref<number[]>([])
-    function getMyLikedSongIds() {
-        // likedSongs(userInfo.userId).then(res => {
-        //     myLikedSongIds.value = res
-        // })
-    }
-
     return {
         hasLogin, userInfo, showLogin,
-        toLogin, getUserInfo, exitLogin,
-        getMyPlayList, myPlayList,
-        getMyLikedSongIds, myLikedSongIds
+        toLogin, getUserInfo, exitLogin
     }
 })
