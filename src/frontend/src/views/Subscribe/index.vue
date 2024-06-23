@@ -86,7 +86,6 @@
 <script setup lang="ts">
 import { computed, ref , onMounted, onBeforeUnmount, nextTick } from "vue";
 import { QrCode } from "@/components/Qrcode/index";
-// const scanImage = ref<string>(require('@/assets/images/qrcode/scan.png'));
 import scanImage from "@/assets/images/qrcode/scan.png";
 import {
   SubscribeTypeOutput,
