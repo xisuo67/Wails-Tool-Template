@@ -41,90 +41,91 @@
         </div>
       </el-col>
     </el-row>
-    <el-row>
-      <el-scrollbar height="400px">
+    <el-row style="height: 62vh;">
+      <el-scrollbar style="margin-top: -10px">
         <div class="rankList_box">
-				<div class="rankItem" v-for="(item,index) in state.rankList" :key="index">
-					<div class="rankIndex">
-						<text>{{ index + 4 }}</text>
-					</div>
-					<div class="HeardBox">
-						<el-image class="rankHeard" :src="item.headimgurl"></el-image>
-					</div>
+          <div
+            class="rankItem"
+            v-for="(item, index) in state.rankList"
+            :key="index"
+          >
+            <div class="rankIndex">
+              <text>{{ index + 4 }}</text>
+            </div>
+            <div class="HeardBox">
+              <el-image class="rankHeard" :src="item.headimgurl"></el-image>
+            </div>
 
-					<div class="NameBox">
-						<!-- <div class="userName">{{item.name}}</div> -->
-						<div class="userName text-bold">{{item.name}}</div>
-						<div class="userPost text-gray">{{item.post}}</div>
-						<div class="color_ccc">{{item.city}} ｜ <text class="text-blue">{{item.salary}}</text>元</div>
-					</div>
-					<div class="download_box">
-						<image mode="widthFix" src="@/static/rank/download.png"></image>
-					</div>
-				</div>
-			</div>
+            <div class="NameBox">
+              <!-- <div class="userName">{{item.name}}</div> -->
+              <div class="userName text-bold">{{ item.name }}</div>
+              <div class="color_ccc">
+                <text class="text-blue">{{ item.salary }}</text
+                >元
+              </div>
+            </div>
+            <div class="download_box">
+              <image mode="widthFix" src="@/static/rank/download.png"></image>
+            </div>
+          </div>
+        </div>
       </el-scrollbar>
-
     </el-row>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, getCurrentInstance, onBeforeMount, defineAsyncComponent } from 'vue'
+import {
+  ref,
+  reactive,
+  onMounted,
+  getCurrentInstance,
+  onBeforeMount,
+  defineAsyncComponent,
+} from "vue";
 import one from "@/assets/rank/one.png";
 import two from "@/assets/rank/two.png";
 import three from "@/assets/rank/three.png";
 const state = reactive({
-  nowTime: '',
-  rankList: [{
-						headimgurl: 'http://cdn.zhoukaiwen.com/head4.jpg',
-						name: '张 *',
-						post: '全栈工程师',
-						city: '深圳',
-						salary: '17500'
-					}, {
-						headimgurl: 'http://cdn.zhoukaiwen.com/head5.jpg',
-						name: '李 * 阳',
-						post: 'Java后台工程师',
-						city: '杭州',
-						salary: '17000'
-					}, {
-						headimgurl: 'http://cdn.zhoukaiwen.com/head6.png',
-						name: '吕 * 浩',
-						post: 'Web前端工程师',
-						city: '西安',
-						salary: '16000'
-					},
-					{
-						headimgurl: 'http://cdn.zhoukaiwen.com/head7.jpg',
-						name: '张 * 鹏',
-						post: 'Web前端工程师',
-						city: '西安',
-						salary: '15500'
-					},
-					{
-						headimgurl: 'http://cdn.zhoukaiwen.com/head8.jpg',
-						name: '李 * 静',
-						post: 'Web前端工程师',
-						city: '西安',
-						salary: '15000'
-					},
-					{
-						headimgurl: 'http://cdn.zhoukaiwen.com/head9.jpg',
-						name: '周 * 德',
-						post: 'Web前端工程师',
-						city: '西安',
-						salary: '14000'
-					},
-					{
-						headimgurl: 'http://cdn.zhoukaiwen.com/head10.jpeg',
-						name: '赵 *',
-						post: 'Web前端工程师',
-						city: '西安',
-						salary: '13500'
-					}
-				]
-})
+  nowTime: "",
+  rankList: [
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head4.jpg",
+      name: "张 *",
+      salary: "17500",
+    },
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head5.jpg",
+      name: "李 * 阳",
+      salary: "17000",
+    },
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head6.png",
+      name: "吕 * 浩",
+      salary: "16000",
+    },
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head7.jpg",
+      name: "张 * 鹏",
+      salary: "15500",
+    },
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head8.jpg",
+      name: "李 * 静",
+      salary: "15000",
+    },
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head9.jpg",
+      name: "周 * 德",
+      salary: "14000",
+    },
+    {
+      headimgurl: "http://cdn.zhoukaiwen.com/head10.jpeg",
+      name: "赵 *",
+      salary: "13500",
+    },
+  ],
+});
 </script>
 
 <style scoped>
@@ -137,6 +138,7 @@ const state = reactive({
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  height: 38vh;
 }
 
 .one_box .top3 {
@@ -149,23 +151,23 @@ const state = reactive({
 }
 
 .huangguan {
-  width: 123px;
-  height: 123px;
+  width: 83px;
+  height: 83px;
   position: absolute;
   top: -32px;
   left: 50%;
 }
 .huangguan1 {
-  top: 10px;
-  left: 52%;
+  top: -20px;
+  left: 50%;
 }
 .huangguan2 {
-  top: 10px;
-  left: 46%;
+  top: 28px;
+  left: 45%;
 }
 .top3_head {
-  width: 128px;
-  height: 128px;
+  width: 88px;
+  height: 88px;
   border-radius: 100%;
   border: 4px solid;
   margin-top: 60px;
@@ -173,9 +175,10 @@ const state = reactive({
 }
 
 .num_one .top3_head {
-  width: 185px;
-  height: 185px;
+  width: 125px;
+  height: 125px;
   border-color: #ffdd3c;
+  margin-top: 10px;
 }
 
 .num_two .top3_head {
@@ -210,75 +213,74 @@ const state = reactive({
   white-space: nowrap;
 }
 
-.rankList_box{
-    width: 100%;
-    min-height: 247px;
-    margin-top: 161px;
+.rankList_box {
+  width: 100%;
+  min-height: 247px;
 }
 .rankItem:last-child {
-		border: none;
-	}
-.rankItem{
-    width: 867px;
-    height: 173px;
-    margin: 0px auto;
-    border-bottom: 1px solid #e9e9e9;
+  border: none;
+}
+.rankItem {
+  width: 867px;
+  height: 120px;
+  margin: 0px auto;
+  border-bottom: 1px solid #e9e9e9;
 }
 .rankIndex {
-    width: 74px;
-    height: 173px;
-    line-height: 173px;
-    text-align: center;
-    color: #CCCCCC;
-    font-size: 49px;
-    float: left;
+  width: 74px;
+  height: 40px;
+  line-height: 115px;
+  text-align: center;
+  color: #cccccc;
+  font-size: 40px;
+  float: left;
 }
-.HeardBox{
-    width: 123px;
-    height: 123px;
-    margin: 24px;
-    border-radius: 100%;
-    overflow: hidden;
-    float: left;
-    margin-right: 30px;
-    margin-left: 12px !important;
+.HeardBox {
+  width: 48px;
+  height: 48px;
+  margin: 30px;
+  border-radius: 100%;
+  overflow: hidden;
+  float: left;
+  margin-right: 30px;
+  margin-left: 12px !important;
 }
 
 .HeardBox image {
-		width: 100%;
-		height: 100%;
-	}
+  width: 100%;
+  height: 100%;
+}
 
-	.NameBox {
-    width: 495px;
-    height: 173px;
-    float: left;
-    padding-top: 12px;
-    box-sizing: border-box;
-	}
+.NameBox {
+  width: 495px;
+  height: 120px;
+  float: left;
+  padding-top: 12px;
+  box-sizing: border-box;
+}
 
-	.NameBox div {
-    height: 61px;
-    line-height: 86px;
-	}
+.NameBox div {
+  height: 61px;
+  line-height: 86px;
+}
 
-	.userName {
-    min-width: 111px;
-    font-size: 37px;
-    float: left;
-    margin-right: 24px;
-	}
+.userName {
+  min-width: 111px;
+  font-size: 20px;
+  float: left;
+  margin-right: 24px;
+  font-weight: bold;
+}
 
-	.download_box {
-    width: 99px;
-    height: 173px;
-    float: right;
+.download_box {
+  width: 99px;
+  height: 173px;
+  float: right;
+}
 
-	}
-
-	.download_box image {
-    width: 55px;
-    margin: 61px auto;
-    display: block;
-	}
+.download_box image {
+  width: 55px;
+  margin: 61px auto;
+  display: block;
+}
 </style>
