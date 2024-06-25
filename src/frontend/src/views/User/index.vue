@@ -13,37 +13,9 @@
                         <i>Lv.{{ userInfo.level }}</i>
                     </span>
                     <div class="extra">
-                        <!-- <a-button-group size="small">
-                            <a-button icon="edit" :disabled="true">编辑信息</a-button>
-                            <a-button type="primary" icon="check" @click="subscribe(2, user)"
-                                v-if="user.profile.followed">
-                                {{
-                                    user.profile.followTime
-                                        ? user.profile.followTime
-                                        : "已关注"
-                                }}
-                            </a-button>
-                            <a-button icon="plus" @click="subscribe(1, user)" v-else>
-                                关注
-                            </a-button>
-                        </a-button-group> -->
+                      
                     </div>
                 </div>
-                <!-- <nav class="row2">
-                    <router-link :to="`/user-event?uid=${userInfo.userId}&nickname=${userInfo.nickname}`"
-                        class="row-item">
-                        <strong>{{ user.profile.eventCount }}</strong>
-                        <div>动态</div>
-                    </router-link>
-                    <router-link to="/follower" class="row-item">
-                        <strong>{{ user.profile.follows }}</strong>
-                        <div>关注</div>
-                    </router-link>
-                    <router-link to="/followed" class="row-item">
-                        <strong>{{ user.profile.followeds }}</strong>
-                        <div>粉丝</div>
-                    </router-link>
-                </nav> -->
                 <div class="row3">简介:
                     {{
                         userInfo.description
@@ -53,44 +25,6 @@
                     </div>
             </div>
         </div>
-        <!-- <div class="user-detail-playlist">
-            <div class="title">{{ userInfo.nickname }} 的歌单( {{ total }} )</div>
-            <ul>
-                <li v-for="playlist in list" :key="playlist.id" class="list-item">
-                    <router-link :to="`/playlist/${playlist.id}`" class="playlist">
-                        <img v-lazy="`${playlist.coverImgUrl}?param=42y42`" class="avatar" />
-                        <div class="name">{{ playlist.name }}</div>
-                        <div class="track-count">
-                            歌曲: {{ playlist.trackCount }}首
-                        </div>
-                        <div class="nickname">
-                            by
-                            <router-link
-                                :to="`/user?id=${playlist.creator.userId}`"
-                                >{{ playlist.creator.nickname }}</router-link
-                            >
-                        </div>
-                        <div class="sub-count">
-                            <a-icon type="folder-add" />
-                            {{ playlist.subscribedCount }}
-                        </div>
-                        <div class="play-count">
-                            <a-icon type="play-circle" />
-                            {{ playlist.playCount }}
-                        </div>
-                    </router-link>
-                </li>
-            </ul>
-            <div class="page">
-                <a-pagination
-                    size="small"
-                    v-model="page"
-                    :pageSize="pageSize"
-                    :total="total"
-                    @change="onPageChange"
-                />
-            </div>
-        </div> -->
     </div>
 </template>
 
@@ -101,7 +35,7 @@ const userStore = useUserStore()
 const { hasLogin, userInfo } = storeToRefs(userStore)
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .img-vip {
     width: 30px;
     height: 12px;
@@ -209,67 +143,6 @@ const { hasLogin, userInfo } = storeToRefs(userStore)
         }
     }
 }
-
-.user-detail-playlist {
-    .title {
-        line-height: 28px;
-        padding: 0 20px;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-        font-size: 12px;
-    }
-
-    .list-item {
-        background: #efefef;
-
-        &:nth-child(even) {
-            background: #f3f5f7;
-        }
-
-        &:hover {
-            background: #ddd;
-        }
-
-        .playlist {
-            display: flex;
-            align-items: center;
-            padding: 6px 20px;
-            color: #333;
-            box-sizing: content-box;
-            border-bottom: 1px solid #eee;
-            font-size: 12px;
-
-            .avatar {
-                flex: 0 0 42px;
-                width: 42px;
-                height: 42px;
-                border: 1px solid #eee;
-            }
-
-            .name {
-                flex: 3;
-                padding: 0 10px;
-            }
-
-            .track-count,
-            .sub-count,
-            .play-count,
-            .nickname {
-                flex: 1;
-                color: #888;
-            }
-
-            .nickname a {
-                color: #333;
-
-                // &:hover {
-                //     color: @primary-color;
-                // }
-            }
-        }
-    }
-}
-
 .page {
     margin: 20px 0;
     text-align: center;

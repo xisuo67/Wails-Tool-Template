@@ -7,8 +7,6 @@ import '@/styles/utils.scss'
 import '@/styles/theme.scss'
 import '@/styles/entry.css'
 import '@/styles/element-plus.scss'
-import '@/styles/player.scss'
-
 const app = createApp(App)
 app.use(router)
 app.use(createPinia())
