@@ -27,8 +27,8 @@
   import {useUserStore} from "@/stores/user";
   
   const userStore = useUserStore()
-  const { toLogin, getMyPlayList } = userStore
-  const { hasLogin, myPlayList } = storeToRefs(userStore)
+  const { toLogin } = userStore
+  const { hasLogin } = storeToRefs(userStore)
   
   const router = useRouter()
   
@@ -50,11 +50,11 @@
             text: '为我推荐',
             icon:Home
           },
-          {
-            path: '/video',
-            text: '教学视频',
-            icon:Video
-          }
+          // {
+          //   path: '/video',
+          //   text: '教学视频',
+          //   icon:Video
+          // }
         ]
       },
       {

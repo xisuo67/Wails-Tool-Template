@@ -27,12 +27,11 @@ import {computed, h, ref} from "vue";
 import { useRouter } from "vue-router";
 import {storeToRefs} from "pinia";
 import {useUserStore} from "@/stores/user";
-import {createPlayList} from "@/api/playlist";
 import {ElCheckbox} from "element-plus";
 
 const userStore = useUserStore()
-const { toLogin, getMyPlayList } = userStore
-const { hasLogin, myPlayList } = storeToRefs(userStore)
+const { toLogin } = userStore
+const { hasLogin } = storeToRefs(userStore)
 
 const router = useRouter()
 
@@ -53,54 +52,13 @@ const menuGroups = computed(() => {
           path: '/discover',
           text: '为我推荐'
         },
-        {
-          path: '/video',
-          text: '视频'
-        }
+        // {
+        //   path: '/video',
+        //   text: '视频'
+        // }
       ]
     },
-    {
-      title: '我的音乐',
-      list: [
-        {
-          path: `/my/playlist/${myPlayList.value.liked.id}`,
-          text: '我喜欢的音乐',
-          icon: Like
-        },
-        {
-          path: `/my/recent`,
-          text: '最近播放',
-          icon: Time
-        }
-      ]
-    }
   ]
-  if (hasLogin) {
-    // 创建的歌单
-    group.push({
-      title: '创建的歌单',
-      list: myPlayList.value.created.map(item => {
-        return {
-          path: `/my/playlist/${item.id}`,
-          text: item.name,
-          icon: item.privacy ? Lock : MusicMenu
-        }
-      })
-    })
-    // 收藏的歌单
-    if (myPlayList.value.collected.length) {
-      group.push({
-        title: '收藏的歌单',
-        list: myPlayList.value.collected.map(item => {
-          return {
-            path: `/common/playlist/${item.id}`,
-            text: item.name,
-            icon: MusicMenu
-          }
-        })
-      })
-    }
-  }
   return group
 })
 
