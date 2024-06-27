@@ -64,3 +64,13 @@ cd Wails-Tool-Template
 wails build
 ```
 
+## 赞助
+
+如果这个项目对您有很大帮助，并且您希望支持该项目的开发和维护，请随时扫描一下二维码进行捐赠。非常感谢您的捐款，谢谢！
+<table>
+    <tr>
+        <td><img height="400px" width="300px" src="screenShot/wechatpay.jpg"/></td>
+        <td><img  height="400px" width="300px" src="screenShot/alipay.jpg"/></td>
+    </tr>
+</table>
+
