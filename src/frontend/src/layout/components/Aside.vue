@@ -5,9 +5,6 @@
         <li v-for="menuGroup in menuGroups" class="menu-group">
           <div v-if="menuGroup.title" class="menu-group-title flex justify-between">
             <span>{{menuGroup.title}}</span>
-            <el-link v-if="menuGroup.title === '创建的歌单'" :underline="false" @click="toCreatePlayList">
-              <Plus theme="filled" size="14" fill="#000000" :strokeWidth="1" />
-            </el-link>
           </div>
           <router-link v-for="menuItem in menuGroup.list"
                        class="menu-item" :class="{ active: isActive(menuItem.path), 'not-need-login': !menuGroup.title }"
@@ -22,12 +19,10 @@
 </template>
 
 <script setup lang="ts">
-import {Like, MusicMenu, Lock, Plus, Time} from '@icon-park/vue-next';
 import {computed, h, ref} from "vue";
 import { useRouter } from "vue-router";
 import {storeToRefs} from "pinia";
 import {useUserStore} from "@/stores/user";
-import {ElCheckbox} from "element-plus";
 
 const userStore = useUserStore()
 const { toLogin } = userStore
@@ -64,39 +59,6 @@ const menuGroups = computed(() => {
 
 function isActive(path: string) {
   return router.currentRoute.value.fullPath.includes(path)
-}
-
-const isPrivacy = ref<boolean | string | number>(false)
-function toCreatePlayList() {
-  if (!hasLogin.value) {
-    toLogin()
-    return
-  }
-  ElMessageBox.prompt(() => h(ElCheckbox, {
-    modelValue: isPrivacy.value,
-    label: '设置为隐私歌单',
-    "onUpdate:modelValue": (val) => {
-      isPrivacy.value = val
-    }
-  }), '新建歌单', {
-    confirmButtonText: '创建',
-    showCancelButton: false,
-    inputPattern: /^[^@#]+$/,
-    inputErrorMessage: '歌单名不能包含@或#',
-    center: true,
-    roundButton: true,
-    draggable: true
-  }).then(({ value }) => {
-    createPlayList(value, isPrivacy.value as boolean).then(() => {
-      getMyPlayList()
-      ElMessage({
-        message: '歌单创建成功！',
-        type: 'success',
-        duration: 1000,
-        center: true
-      })
-    })
-  }).catch(() => {})
 }
 </script>
 
